@@ -24,8 +24,8 @@ soup = BeautifulSoup(data.text, 'html.parser')
 list=soup.select('.list-wrap > tbody > tr')
 rank=1
 for item in list:
-    title=item.select_one('a.title.ellipsis')
-    singer=item.select_one('a.artist.ellipsis')
+    title=item.select_one('.title.ellipsis').text
+    singer=item.select_one('a.artist.ellipsis').text
     if title is not None:
-        print(rank, title.string, singer.string)
+        print(rank, title, singer)
         rank+=1
